@@ -35,7 +35,14 @@ library("magrittr")
 # Codes for analysis
 
 ```{r}
-
+library("tximport")
+library("readr")
+library("tximportData")
+dir <- system.file("extdata", package="tximportData")
+samples <- read.table(file.path(dir,"samples.txt"), header=TRUE)
+samples$condition <- factor(rep(c("A","B"),each=3))
+rownames(samples) <- samples$run
+samples[,c("pop","center","run","condition")]
 ```
 
 ```{r}
